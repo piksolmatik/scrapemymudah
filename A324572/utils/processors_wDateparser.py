@@ -11,7 +11,7 @@ try:
 except ImportError:
     from itertools import zip_longest as izip_longest
 
-#from dateparser.date import DateDataParser
+from dateparser.date import DateDataParser
 from scrapy.loader.processors import Identity as _Identity
 from scrapy.utils.markup import unquote_markup
 from w3lib.html import remove_tags
@@ -162,7 +162,7 @@ class Price(BaseProcessor):
 
 
 class Date(Text):
-    """ def __init__(self, format='%Y-%m-%dT%H:%M:%S'):
+    def __init__(self, format='%Y-%m-%dT%H:%M:%S'):
         self.format = format
 
     def __call__(self, values):
@@ -176,8 +176,7 @@ class Date(Text):
                 dates.append(date.strftime(self.format))
             except ValueError:
                 pass
-        return dates """
-    pass
+        return dates
 
 
 class Url(Text):
